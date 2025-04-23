@@ -1,0 +1,423 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Arac_Kiralama_ProjesiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AracKategorileri">
+    <Key>
+      <PropertyRef Name="kategori_no" />
+    </Key>
+    <Property Name="kategori_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kategori_ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Araclar">
+    <Key>
+      <PropertyRef Name="arac_no" />
+    </Key>
+    <Property Name="arac_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="marka" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="model" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="yil" Type="int" Nullable="false" />
+    <Property Name="yakit_tipi" Type="nvarchar" MaxLength="30" />
+    <Property Name="vites_tipi" Type="nvarchar" MaxLength="30" />
+    <Property Name="kilometre" Type="int" />
+    <Property Name="kategori_id" Type="int" Nullable="false" />
+    <Property Name="sube_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Degerlendirme">
+    <Key>
+      <PropertyRef Name="degerlendirme_no" />
+    </Key>
+    <Property Name="degerlendirme_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="musteri_id" Type="int" Nullable="false" />
+    <Property Name="arac_id" Type="int" Nullable="false" />
+    <Property Name="puan" Type="int" Nullable="false" />
+    <Property Name="yorum" Type="nvarchar" MaxLength="50" />
+    <Property Name="inceleme_tarihi" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EkSuruculer">
+    <Key>
+      <PropertyRef Name="ek_surucu_no" />
+    </Key>
+    <Property Name="ek_surucu_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rezervasyon_id" Type="int" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="ehliyet_bilgileri" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KiralamaDurumu">
+    <Key>
+      <PropertyRef Name="kiralama_durumu_no" />
+    </Key>
+    <Property Name="kiralama_durumu_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="arac_id" Type="int" Nullable="false" />
+    <Property Name="kiralik" Type="tinyint" Nullable="false" />
+    <Property Name="baslangic_tarihi" Type="date" />
+    <Property Name="bitis_tarihi" Type="date" />
+  </EntityType>
+  <EntityType Name="KiralamaUcretleri">
+    <Key>
+      <PropertyRef Name="kiralama_no" />
+    </Key>
+    <Property Name="kiralama_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rezervasyon_id" Type="int" Nullable="false" />
+    <Property Name="gunluk_ucret" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="ek_ucretler" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="toplam_odeme" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KullaniciRolleri">
+    <Key>
+      <PropertyRef Name="rol_no" />
+    </Key>
+    <Property Name="rol_no" Type="int" Nullable="false" />
+    <Property Name="rol_ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Musteriler">
+    <Key>
+      <PropertyRef Name="musteri_no" />
+    </Key>
+    <Property Name="musteri_no" Type="int" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="soyad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="sifre" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="telefon" Type="nvarchar" MaxLength="12" />
+    <Property Name="rol_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Odemeler">
+    <Key>
+      <PropertyRef Name="odeme_no" />
+    </Key>
+    <Property Name="odeme_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="rezervasyon_id" Type="int" Nullable="false" />
+    <Property Name="odeme_tarihi" Type="date" Nullable="false" />
+    <Property Name="odeme_turu" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="tutar" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Personel">
+    <Key>
+      <PropertyRef Name="personel_no" />
+    </Key>
+    <Property Name="personel_no" Type="int" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="soyad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="sifre" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="telefon" Type="nvarchar" MaxLength="12" />
+    <Property Name="rol_id" Type="int" Nullable="false" />
+    <Property Name="sube_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Rezervasyonlar">
+    <Key>
+      <PropertyRef Name="rezervasyon_no" />
+    </Key>
+    <Property Name="rezervasyon_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="arac_id" Type="int" Nullable="false" />
+    <Property Name="musteri_id" Type="int" Nullable="false" />
+    <Property Name="baslangic_tarihi" Type="date" Nullable="false" />
+    <Property Name="bitis_tarihi" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Subeler">
+    <Key>
+      <PropertyRef Name="sube_no" />
+    </Key>
+    <Property Name="sube_no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sube_ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="adres" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="telefon" Type="nvarchar" MaxLength="12" />
+  </EntityType>
+  <EntityType Name="Yonetici">
+    <Key>
+      <PropertyRef Name="yonetici_no" />
+    </Key>
+    <Property Name="yonetici_no" Type="int" Nullable="false" />
+    <Property Name="ad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="soyad" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="sifre" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="telefon" Type="nvarchar" MaxLength="12" />
+    <Property Name="rol_id" Type="int" Nullable="false" />
+    <Property Name="sube_id" Type="int" />
+  </EntityType>
+  <Association Name="fk_AracKategorileri_Araclar">
+    <End Role="AracKategorileri" Type="Self.AracKategorileri" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Araclar" Type="Self.Araclar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AracKategorileri">
+        <PropertyRef Name="kategori_no" />
+      </Principal>
+      <Dependent Role="Araclar">
+        <PropertyRef Name="kategori_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Araclar_Degerlendirme">
+    <End Role="Araclar" Type="Self.Araclar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Degerlendirme" Type="Self.Degerlendirme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Araclar">
+        <PropertyRef Name="arac_no" />
+      </Principal>
+      <Dependent Role="Degerlendirme">
+        <PropertyRef Name="arac_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Araclar_KiralamaDurumu">
+    <End Role="Araclar" Type="Self.Araclar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="KiralamaDurumu" Type="Self.KiralamaDurumu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Araclar">
+        <PropertyRef Name="arac_no" />
+      </Principal>
+      <Dependent Role="KiralamaDurumu">
+        <PropertyRef Name="arac_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Araclar_Rezervasyonlar">
+    <End Role="Araclar" Type="Self.Araclar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Rezervasyonlar" Type="Self.Rezervasyonlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Araclar">
+        <PropertyRef Name="arac_no" />
+      </Principal>
+      <Dependent Role="Rezervasyonlar">
+        <PropertyRef Name="arac_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_KullaniciRolleri_Musteriler">
+    <End Role="KullaniciRolleri" Type="Self.KullaniciRolleri" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KullaniciRolleri">
+        <PropertyRef Name="rol_no" />
+      </Principal>
+      <Dependent Role="Musteriler">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_KullaniciRolleri_Personel">
+    <End Role="KullaniciRolleri" Type="Self.KullaniciRolleri" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KullaniciRolleri">
+        <PropertyRef Name="rol_no" />
+      </Principal>
+      <Dependent Role="Personel">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_KullaniciRolleri_Yonetici">
+    <End Role="KullaniciRolleri" Type="Self.KullaniciRolleri" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Yonetici" Type="Self.Yonetici" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KullaniciRolleri">
+        <PropertyRef Name="rol_no" />
+      </Principal>
+      <Dependent Role="Yonetici">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Musteriler_Degerlendirme">
+    <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Degerlendirme" Type="Self.Degerlendirme" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteriler">
+        <PropertyRef Name="musteri_no" />
+      </Principal>
+      <Dependent Role="Degerlendirme">
+        <PropertyRef Name="musteri_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Musteriler_Rezervasyonlar">
+    <End Role="Musteriler" Type="Self.Musteriler" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Rezervasyonlar" Type="Self.Rezervasyonlar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Musteriler">
+        <PropertyRef Name="musteri_no" />
+      </Principal>
+      <Dependent Role="Rezervasyonlar">
+        <PropertyRef Name="musteri_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Rezervasyonlar_EkSuruculer">
+    <End Role="Rezervasyonlar" Type="Self.Rezervasyonlar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="EkSuruculer" Type="Self.EkSuruculer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezervasyonlar">
+        <PropertyRef Name="rezervasyon_no" />
+      </Principal>
+      <Dependent Role="EkSuruculer">
+        <PropertyRef Name="rezervasyon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Rezervasyonlar_KiralamaUcretleri">
+    <End Role="Rezervasyonlar" Type="Self.Rezervasyonlar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="KiralamaUcretleri" Type="Self.KiralamaUcretleri" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezervasyonlar">
+        <PropertyRef Name="rezervasyon_no" />
+      </Principal>
+      <Dependent Role="KiralamaUcretleri">
+        <PropertyRef Name="rezervasyon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Rezervasyonlar_Odemeler">
+    <End Role="Rezervasyonlar" Type="Self.Rezervasyonlar" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Odemeler" Type="Self.Odemeler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Rezervasyonlar">
+        <PropertyRef Name="rezervasyon_no" />
+      </Principal>
+      <Dependent Role="Odemeler">
+        <PropertyRef Name="rezervasyon_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Subeler_Araclar">
+    <End Role="Subeler" Type="Self.Subeler" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Araclar" Type="Self.Araclar" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subeler">
+        <PropertyRef Name="sube_no" />
+      </Principal>
+      <Dependent Role="Araclar">
+        <PropertyRef Name="sube_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Subeler_Personel">
+    <End Role="Subeler" Type="Self.Subeler" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Personel" Type="Self.Personel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subeler">
+        <PropertyRef Name="sube_no" />
+      </Principal>
+      <Dependent Role="Personel">
+        <PropertyRef Name="sube_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Subeler_Yonetici">
+    <End Role="Subeler" Type="Self.Subeler" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Yonetici" Type="Self.Yonetici" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Subeler">
+        <PropertyRef Name="sube_no" />
+      </Principal>
+      <Dependent Role="Yonetici">
+        <PropertyRef Name="sube_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Arac_Kiralama_ProjesiModelStoreContainer">
+    <EntitySet Name="AracKategorileri" EntityType="Self.AracKategorileri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Araclar" EntityType="Self.Araclar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Degerlendirme" EntityType="Self.Degerlendirme" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EkSuruculer" EntityType="Self.EkSuruculer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KiralamaDurumu" EntityType="Self.KiralamaDurumu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KiralamaUcretleri" EntityType="Self.KiralamaUcretleri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KullaniciRolleri" EntityType="Self.KullaniciRolleri" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Musteriler" EntityType="Self.Musteriler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Odemeler" EntityType="Self.Odemeler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Personel" EntityType="Self.Personel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Rezervasyonlar" EntityType="Self.Rezervasyonlar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Subeler" EntityType="Self.Subeler" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Yonetici" EntityType="Self.Yonetici" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="fk_AracKategorileri_Araclar" Association="Self.fk_AracKategorileri_Araclar">
+      <End Role="AracKategorileri" EntitySet="AracKategorileri" />
+      <End Role="Araclar" EntitySet="Araclar" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Araclar_Degerlendirme" Association="Self.fk_Araclar_Degerlendirme">
+      <End Role="Araclar" EntitySet="Araclar" />
+      <End Role="Degerlendirme" EntitySet="Degerlendirme" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Araclar_KiralamaDurumu" Association="Self.fk_Araclar_KiralamaDurumu">
+      <End Role="Araclar" EntitySet="Araclar" />
+      <End Role="KiralamaDurumu" EntitySet="KiralamaDurumu" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Araclar_Rezervasyonlar" Association="Self.fk_Araclar_Rezervasyonlar">
+      <End Role="Araclar" EntitySet="Araclar" />
+      <End Role="Rezervasyonlar" EntitySet="Rezervasyonlar" />
+    </AssociationSet>
+    <AssociationSet Name="fk_KullaniciRolleri_Musteriler" Association="Self.fk_KullaniciRolleri_Musteriler">
+      <End Role="KullaniciRolleri" EntitySet="KullaniciRolleri" />
+      <End Role="Musteriler" EntitySet="Musteriler" />
+    </AssociationSet>
+    <AssociationSet Name="fk_KullaniciRolleri_Personel" Association="Self.fk_KullaniciRolleri_Personel">
+      <End Role="KullaniciRolleri" EntitySet="KullaniciRolleri" />
+      <End Role="Personel" EntitySet="Personel" />
+    </AssociationSet>
+    <AssociationSet Name="fk_KullaniciRolleri_Yonetici" Association="Self.fk_KullaniciRolleri_Yonetici">
+      <End Role="KullaniciRolleri" EntitySet="KullaniciRolleri" />
+      <End Role="Yonetici" EntitySet="Yonetici" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Musteriler_Degerlendirme" Association="Self.fk_Musteriler_Degerlendirme">
+      <End Role="Musteriler" EntitySet="Musteriler" />
+      <End Role="Degerlendirme" EntitySet="Degerlendirme" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Musteriler_Rezervasyonlar" Association="Self.fk_Musteriler_Rezervasyonlar">
+      <End Role="Musteriler" EntitySet="Musteriler" />
+      <End Role="Rezervasyonlar" EntitySet="Rezervasyonlar" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Rezervasyonlar_EkSuruculer" Association="Self.fk_Rezervasyonlar_EkSuruculer">
+      <End Role="Rezervasyonlar" EntitySet="Rezervasyonlar" />
+      <End Role="EkSuruculer" EntitySet="EkSuruculer" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Rezervasyonlar_KiralamaUcretleri" Association="Self.fk_Rezervasyonlar_KiralamaUcretleri">
+      <End Role="Rezervasyonlar" EntitySet="Rezervasyonlar" />
+      <End Role="KiralamaUcretleri" EntitySet="KiralamaUcretleri" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Rezervasyonlar_Odemeler" Association="Self.fk_Rezervasyonlar_Odemeler">
+      <End Role="Rezervasyonlar" EntitySet="Rezervasyonlar" />
+      <End Role="Odemeler" EntitySet="Odemeler" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Subeler_Araclar" Association="Self.fk_Subeler_Araclar">
+      <End Role="Subeler" EntitySet="Subeler" />
+      <End Role="Araclar" EntitySet="Araclar" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Subeler_Personel" Association="Self.fk_Subeler_Personel">
+      <End Role="Subeler" EntitySet="Subeler" />
+      <End Role="Personel" EntitySet="Personel" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Subeler_Yonetici" Association="Self.fk_Subeler_Yonetici">
+      <End Role="Subeler" EntitySet="Subeler" />
+      <End Role="Yonetici" EntitySet="Yonetici" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

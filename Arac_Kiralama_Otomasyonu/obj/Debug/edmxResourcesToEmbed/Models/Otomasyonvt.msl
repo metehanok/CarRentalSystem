@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Arac_Kiralama_ProjesiModelStoreContainer" CdmEntityContainer="Arac_Kiralama_ProjesiEntities">
+    <EntitySetMapping Name="AracKategorileri">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.AracKategorileri">
+        <MappingFragment StoreEntitySet="AracKategorileri">
+          <ScalarProperty Name="kategori_no" ColumnName="kategori_no" />
+          <ScalarProperty Name="kategori_ad" ColumnName="kategori_ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Araclar">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.Araclar">
+        <MappingFragment StoreEntitySet="Araclar">
+          <ScalarProperty Name="arac_no" ColumnName="arac_no" />
+          <ScalarProperty Name="marka" ColumnName="marka" />
+          <ScalarProperty Name="model" ColumnName="model" />
+          <ScalarProperty Name="yil" ColumnName="yil" />
+          <ScalarProperty Name="yakit_tipi" ColumnName="yakit_tipi" />
+          <ScalarProperty Name="vites_tipi" ColumnName="vites_tipi" />
+          <ScalarProperty Name="kilometre" ColumnName="kilometre" />
+          <ScalarProperty Name="kategori_id" ColumnName="kategori_id" />
+          <ScalarProperty Name="sube_id" ColumnName="sube_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Degerlendirme">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.Degerlendirme">
+        <MappingFragment StoreEntitySet="Degerlendirme">
+          <ScalarProperty Name="degerlendirme_no" ColumnName="degerlendirme_no" />
+          <ScalarProperty Name="musteri_id" ColumnName="musteri_id" />
+          <ScalarProperty Name="arac_id" ColumnName="arac_id" />
+          <ScalarProperty Name="puan" ColumnName="puan" />
+          <ScalarProperty Name="yorum" ColumnName="yorum" />
+          <ScalarProperty Name="inceleme_tarihi" ColumnName="inceleme_tarihi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EkSuruculer">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.EkSuruculer">
+        <MappingFragment StoreEntitySet="EkSuruculer">
+          <ScalarProperty Name="ek_surucu_no" ColumnName="ek_surucu_no" />
+          <ScalarProperty Name="rezervasyon_id" ColumnName="rezervasyon_id" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="ehliyet_bilgileri" ColumnName="ehliyet_bilgileri" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KiralamaDurumu">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.KiralamaDurumu">
+        <MappingFragment StoreEntitySet="KiralamaDurumu">
+          <ScalarProperty Name="kiralama_durumu_no" ColumnName="kiralama_durumu_no" />
+          <ScalarProperty Name="arac_id" ColumnName="arac_id" />
+          <ScalarProperty Name="kiralik" ColumnName="kiralik" />
+          <ScalarProperty Name="baslangic_tarihi" ColumnName="baslangic_tarihi" />
+          <ScalarProperty Name="bitis_tarihi" ColumnName="bitis_tarihi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KiralamaUcretleri">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.KiralamaUcretleri">
+        <MappingFragment StoreEntitySet="KiralamaUcretleri">
+          <ScalarProperty Name="kiralama_no" ColumnName="kiralama_no" />
+          <ScalarProperty Name="rezervasyon_id" ColumnName="rezervasyon_id" />
+          <ScalarProperty Name="gunluk_ucret" ColumnName="gunluk_ucret" />
+          <ScalarProperty Name="ek_ucretler" ColumnName="ek_ucretler" />
+          <ScalarProperty Name="toplam_odeme" ColumnName="toplam_odeme" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KullaniciRolleri">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.KullaniciRolleri">
+        <MappingFragment StoreEntitySet="KullaniciRolleri">
+          <ScalarProperty Name="rol_no" ColumnName="rol_no" />
+          <ScalarProperty Name="rol_ad" ColumnName="rol_ad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Musteriler">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.Musteriler">
+        <MappingFragment StoreEntitySet="Musteriler">
+          <ScalarProperty Name="musteri_no" ColumnName="musteri_no" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="soyad" ColumnName="soyad" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Odemeler">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.Odemeler">
+        <MappingFragment StoreEntitySet="Odemeler">
+          <ScalarProperty Name="odeme_no" ColumnName="odeme_no" />
+          <ScalarProperty Name="rezervasyon_id" ColumnName="rezervasyon_id" />
+          <ScalarProperty Name="odeme_tarihi" ColumnName="odeme_tarihi" />
+          <ScalarProperty Name="odeme_turu" ColumnName="odeme_turu" />
+          <ScalarProperty Name="tutar" ColumnName="tutar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personel">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.Personel">
+        <MappingFragment StoreEntitySet="Personel">
+          <ScalarProperty Name="personel_no" ColumnName="personel_no" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="soyad" ColumnName="soyad" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="sube_id" ColumnName="sube_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Rezervasyonlar">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.Rezervasyonlar">
+        <MappingFragment StoreEntitySet="Rezervasyonlar">
+          <ScalarProperty Name="rezervasyon_no" ColumnName="rezervasyon_no" />
+          <ScalarProperty Name="arac_id" ColumnName="arac_id" />
+          <ScalarProperty Name="musteri_id" ColumnName="musteri_id" />
+          <ScalarProperty Name="baslangic_tarihi" ColumnName="baslangic_tarihi" />
+          <ScalarProperty Name="bitis_tarihi" ColumnName="bitis_tarihi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subeler">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.Subeler">
+        <MappingFragment StoreEntitySet="Subeler">
+          <ScalarProperty Name="sube_no" ColumnName="sube_no" />
+          <ScalarProperty Name="sube_ad" ColumnName="sube_ad" />
+          <ScalarProperty Name="adres" ColumnName="adres" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Yonetici">
+      <EntityTypeMapping TypeName="Arac_Kiralama_ProjesiModel.Yonetici">
+        <MappingFragment StoreEntitySet="Yonetici">
+          <ScalarProperty Name="yonetici_no" ColumnName="yonetici_no" />
+          <ScalarProperty Name="ad" ColumnName="ad" />
+          <ScalarProperty Name="soyad" ColumnName="soyad" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="sifre" ColumnName="sifre" />
+          <ScalarProperty Name="telefon" ColumnName="telefon" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+          <ScalarProperty Name="sube_id" ColumnName="sube_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
